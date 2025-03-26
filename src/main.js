@@ -14,6 +14,7 @@ class GameScene extends Phaser.Scene {
     this.playerSpeed = speedDown + 50
     this.target // The actual apple
     this.points = 0
+    this.textScore
   }
   
   preload(){
@@ -39,6 +40,11 @@ class GameScene extends Phaser.Scene {
       .setOrigin(0, 0)
     this.target.setMaxVelocity(0, speedDown)
     this.physics.add.overlap(this.target, this.player, this.targetHit, null, this)
+
+    this.textScore = this.add.text(sizes.width - 120, 10, "Score: 0", {
+      font: "25px Arial",
+      fill: "black",
+    })
   }
   
   update(){
@@ -70,6 +76,7 @@ class GameScene extends Phaser.Scene {
     this.target.setY(0);
     this.target.setX(this.getRandomX())
     this.points++
+    this.textScore.setText(`Score: ${this.points}`)
   }
 }
 
