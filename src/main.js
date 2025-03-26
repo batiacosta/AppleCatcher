@@ -5,7 +5,7 @@ const sizes = {
   width: 500,
   height: 500,
 }
-const speedDown = 300;
+const speedDown = 150;
 class GameScene extends Phaser.Scene {
   constructor() {
     super("scene-game")
@@ -14,6 +14,10 @@ class GameScene extends Phaser.Scene {
     this.playerSpeed = speedDown + 50
     this.target // The actual apple
     this.points = 0
+    this.textScore
+    this.textTimer
+    this.timedEvent
+    this.timeLeft
   }
   
   preload(){
@@ -39,10 +43,23 @@ class GameScene extends Phaser.Scene {
       .setOrigin(0, 0)
     this.target.setMaxVelocity(0, speedDown)
     this.physics.add.overlap(this.target, this.player, this.targetHit, null, this)
+
+    this.textScore = this.add.text(sizes.width - 120, 10, "Score: 0", {
+      font: "25px Arial",
+      fill: "black",
+    })
+    this.textTimer = this.add.text(10, 10, "Timer: 00", {
+      font: "25px Arial",
+      fill: "black",
+    })
+
+    this.timedEvent = this.time.delayedCall(4000, this.gameOver, [], this)
   }
   
   update(){
 
+    this.remainingTime = this.timedEvent.getRemainingSeconds()
+    this.textTimer.setText(`Timer: ${Math.round(this.remainingTime).toString()}`)
     if(this.target.y >= sizes.height){
       this.target.setY(0)
       this.target.setX(this.getRandomX())
@@ -66,11 +83,18 @@ class GameScene extends Phaser.Scene {
   getRandomX() {
     return Math.floor(Math.random() * 480)
   }
+
   targetHit(){
     this.target.setY(0);
     this.target.setX(this.getRandomX())
     this.points++
+    this.textScore.setText(`Score: ${this.points}`)
   }
+
+  gameOver(){
+
+  }
+
 }
 
 const config = {
