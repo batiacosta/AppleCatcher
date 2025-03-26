@@ -34,6 +34,7 @@ class GameScene extends Phaser.Scene {
     this.coinSound = this.sound.add("coin")
     this.bgMusic = this.sound.add("bgMusic")
     this.bgMusic.play()
+    this.bgMusic.loop = true
 
     this.add.image(0, 0, "bg").setOrigin(0, 0)
     this.player = this.physics.add
