@@ -25,6 +25,7 @@ class GameScene extends Phaser.Scene {
     .setOrigin(0, 0)
     this.player.setImmovable(true)
     this.player.body.allowGravity = false
+    this.player.setCollideWorldBounds(true)
 
     this.cursor = this.input.keyboard.createCursorKeys()
   }
