@@ -5,7 +5,7 @@ const sizes = {
   width: 500,
   height: 500,
 }
-const speedDown = 300;
+const speedDown = 150;
 class GameScene extends Phaser.Scene {
   constructor() {
     super("scene-game")
@@ -15,6 +15,7 @@ class GameScene extends Phaser.Scene {
     this.target // The actual apple
     this.points = 0
     this.textScore
+    this.textTimer
   }
   
   preload(){
@@ -42,6 +43,10 @@ class GameScene extends Phaser.Scene {
     this.physics.add.overlap(this.target, this.player, this.targetHit, null, this)
 
     this.textScore = this.add.text(sizes.width - 120, 10, "Score: 0", {
+      font: "25px Arial",
+      fill: "black",
+    })
+    this.textTimer = this.add.text(10, 10, "Timer: 00", {
       font: "25px Arial",
       fill: "black",
     })
