@@ -29,7 +29,8 @@ class GameScene extends Phaser.Scene {
     this.player.setImmovable(true)
     this.player.body.allowGravity = false
     this.player.setCollideWorldBounds(true)
-    this.player.setSize(80,15).setOffset(10, 70)
+    this.player.setSize(80,15)
+    .setOffset(this.player.width/10, this.player.height - this.player.height/10)
 
     this.cursor = this.input.keyboard.createCursorKeys()
 
