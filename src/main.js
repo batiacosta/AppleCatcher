@@ -16,6 +16,8 @@ class GameScene extends Phaser.Scene {
     this.points = 0
     this.textScore
     this.textTimer
+    this.timedEvent
+    this.timeLeft
   }
   
   preload(){
@@ -50,10 +52,14 @@ class GameScene extends Phaser.Scene {
       font: "25px Arial",
       fill: "black",
     })
+
+    this.timedEvent = this.time.delayedCall(4000, this.gameOver, [], this)
   }
   
   update(){
 
+    this.remainingTime = this.timedEvent.getRemainingSeconds()
+    this.textTimer.setText(`Timer: ${Math.round(this.remainingTime).toString()}`)
     if(this.target.y >= sizes.height){
       this.target.setY(0)
       this.target.setX(this.getRandomX())
@@ -77,12 +83,18 @@ class GameScene extends Phaser.Scene {
   getRandomX() {
     return Math.floor(Math.random() * 480)
   }
+
   targetHit(){
     this.target.setY(0);
     this.target.setX(this.getRandomX())
     this.points++
     this.textScore.setText(`Score: ${this.points}`)
   }
+
+  gameOver(){
+
+  }
+
 }
 
 const config = {
