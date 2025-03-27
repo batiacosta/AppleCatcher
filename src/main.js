@@ -87,14 +87,24 @@ class GameScene extends Phaser.Scene {
   
   update(){
 
-    this.remainingTime = this.timedEvent.getRemainingSeconds()
-    this.textTimer.setText(`Timer: ${Math.round(this.remainingTime).toString()}`)
-    if(this.target.y >= sizes.height){
-      this.target.setY(0)
-      this.target.setX(this.getRandomX())
-    }
+    this.updateTimer();
+    this.checkRelocationTarget();
     this.playerInput()
 
+  }
+
+  updateTimer() {
+    this.remainingTime = this.timedEvent.getRemainingSeconds();
+    this.textTimer.setText(`Timer: ${Math.round(this.remainingTime).toString()}`);
+  }
+
+  checkRelocationTarget() {
+    if (this.target.y >= sizes.height) {
+      this.target.setY(0);
+      this.target.setX(this.getRandomX());
+      this.points--;
+      this.updateScore();
+    }
   }
 
   playerInput() {
@@ -119,7 +129,11 @@ class GameScene extends Phaser.Scene {
     this.target.setY(0);
     this.target.setX(this.getRandomX())
     this.points++
-    this.textScore.setText(`Score: ${this.points}`)
+    this.updateScore();
+  }
+
+  updateScore() {
+    this.textScore.setText(`Score: ${this.points}`);
   }
 
   gameOver(){
