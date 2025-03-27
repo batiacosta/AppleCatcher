@@ -5,7 +5,7 @@ const sizes = {
   width: 500,
   height: 500,
 }
-const speedDown = 150;
+const speedDown = 300;
 
 const gameStartDiv= document.getElementById("gameStartDiv")
 const gameStartButton = document.getElementById("gameStartButton")
@@ -43,8 +43,7 @@ class GameScene extends Phaser.Scene {
     this.coinSound = this.sound.add("coin")
     this.bgMusic = this.sound.add("bgMusic")
     this.bgMusic.play()
-    this.bgMusic.stop()
-    //this.bgMusic.loop = true
+    this.bgMusic.loop = true
 
     this.add.image(0, 0, "bg").setOrigin(0, 0)
     this.player = this.physics.add
@@ -73,7 +72,7 @@ class GameScene extends Phaser.Scene {
       fill: "black",
     })
 
-    this.timedEvent = this.time.delayedCall(4000, this.gameOver, [], this)
+    this.timedEvent = this.time.delayedCall(30000, this.gameOver, [], this)
 
     this.emmiterParticles = this.add.particles(0,0, "money.png", {
       speed: 100,
@@ -123,7 +122,16 @@ class GameScene extends Phaser.Scene {
   }
 
   gameOver(){
-
+    this.sys.game.destroy(true)
+    if(this.points >= 10){
+      gameEndScoreSpan.textContent = this.points
+      gameWinLoseSpan.textContent = "You Win! 😊"
+    }
+    else{
+      gameEndScoreSpan.textContent = this.points
+      gameWinLoseSpan.textContent = "You Lose! 😭"
+    }
+    gameEndDiv.style.display = "flex"
   }
 
 }
