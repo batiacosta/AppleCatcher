@@ -12,6 +12,7 @@ const gameStartButton = document.getElementById("gameStartButton")
 const gameEndDiv = document.getElementById("gameEndDiv")
 const gameWinLoseSpan = document.getElementById("gameWinLoseSpan")
 const gameEndScoreSpan = document.getElementById("gameEndScoreSpan")
+const gameEndButton = document.getElementById("gameEndButton")
 
 class GameScene extends Phaser.Scene {
   constructor() {
@@ -155,4 +156,8 @@ const game = new Phaser.Game(config)
 gameStartButton.addEventListener("click", () => {
   gameStartDiv.style.display = "none"
   game.scene.resume("scene-game")
+})
+
+gameEndButton.addEventListener("click", () => {
+  location.reload()
 })
