@@ -8,6 +8,16 @@
  3. Run the command npm run preview
  4. Open the url the terminal shows in your browser.
 
+# Development
+This is a project to explore PhaserJs framework in a vite setup. The project implements from PhaserJS:
+
+- Arcade physics for overlapping events, and gravity.
+- Music and Sound effects
+- Win / Lose conditions
+- Assets loading
+- Player input (arrow keys)
+- In-game text updates
+
 # The game
 Apple catcher is a simple game where the goal is to catch at least 15 apples in a frame of 30 seconds.
 
@@ -24,5 +34,4 @@ Gameplay
 Final menu
 ![Screenshot 2025-03-26 at 8 39 43 PM](https://github.com/user-attachments/assets/b4bcd22a-ea56-415a-845e-54e9c57368a7)
 
-# Development
-This is a project to explore PhaserJs framework in a vite setup
+
