@@ -7,11 +7,11 @@ const sizes = {
 }
 const speedDown = 150;
 
-const gameStartDiv= document.getElementById("#gameStartDiv")
-const gameStartButton = document.getElementById("#gameStartButton")
-const gameEndDiv = document.getElementById("#gameEndDiv")
-const gameWinLoseSpan = document.getElementById("#gameWinLoseSpan")
-const gameEndScoreSpan = document.getElementById("#gameEndScoreSpan")
+const gameStartDiv= document.getElementById("gameStartDiv")
+const gameStartButton = document.getElementById("gameStartButton")
+const gameEndDiv = document.getElementById("gameEndDiv")
+const gameWinLoseSpan = document.getElementById("gameWinLoseSpan")
+const gameEndScoreSpan = document.getElementById("gameEndScoreSpan")
 
 class GameScene extends Phaser.Scene {
   constructor() {
@@ -39,11 +39,12 @@ class GameScene extends Phaser.Scene {
     this.load.image("money.png", "assets/money.png")
   }
   create(){
-
+    this.scene.pause("scene-game") // Game starts paused
     this.coinSound = this.sound.add("coin")
     this.bgMusic = this.sound.add("bgMusic")
     this.bgMusic.play()
-    this.bgMusic.loop = true
+    this.bgMusic.stop()
+    //this.bgMusic.loop = true
 
     this.add.image(0, 0, "bg").setOrigin(0, 0)
     this.player = this.physics.add
@@ -142,3 +143,8 @@ const config = {
   scene:[GameScene]
 }
 const game = new Phaser.Game(config)
+
+gameStartButton.addEventListener("click", () => {
+  gameStartDiv.style.display = "none"
+  game.scene.resume("scene-game")
+})
