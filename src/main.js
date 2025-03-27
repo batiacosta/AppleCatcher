@@ -61,7 +61,7 @@ class GameScene extends Phaser.Scene {
     this.target = this.physics.add
       .image(0, 0, "apple")
       .setOrigin(0, 0)
-    this.target.setMaxVelocity(0, speedDown)
+    this.target.setMaxVelocity(0, speedDown * 1.5)
     this.physics.add.overlap(this.target, this.player, this.targetHit, null, this)
 
     this.textScore = this.add.text(sizes.width - 120, 10, "Score: 0", {
