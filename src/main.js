@@ -6,6 +6,13 @@ const sizes = {
   height: 500,
 }
 const speedDown = 150;
+
+const gameStartDiv= document.getElementById("#gameStartDiv")
+const gameStartButton = document.getElementById("#gameStartButton")
+const gameEndDiv = document.getElementById("#gameEndDiv")
+const gameWinLoseSpan = document.getElementById("#gameWinLoseSpan")
+const gameEndScoreSpan = document.getElementById("#gameEndScoreSpan")
+
 class GameScene extends Phaser.Scene {
   constructor() {
     super("scene-game")
