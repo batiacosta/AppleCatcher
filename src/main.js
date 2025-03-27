@@ -138,7 +138,7 @@ class GameScene extends Phaser.Scene {
 
   gameOver(){
     this.sys.game.destroy(true)
-    if(this.points >= 10){
+    if(this.points >= 15){
       gameEndScoreSpan.textContent = this.points
       gameWinLoseSpan.textContent = "You Win! 😊"
     }
