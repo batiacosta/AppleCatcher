@@ -12,6 +12,21 @@
     </header>
     <main>
       <canvas id="gameCanvas"></canvas>
+      <div id="gameStartDiv" class="gameUI">
+        <h1>Apples Catcher</h1>
+        <p>You have 30 seconds to catch apples</p>
+        <p>If you catch more than 10 apples you win</p>
+        <p>If you catch less than 10 apples you lose</p>
+        <p>Click the start button to begin</p>
+        <button id="gameStartButton"><p>Start</p></button>
+      </div>
+      <div id="gameEndDiv" class="gameUI">
+        <p>Game Over</p>
+        <h1>You <span id="gameWinLoseSpan"></span></h1>
+        <h1>Final score: <span id="gameEndScoreSpan"></span></h1>
+        <p>Refresh to play again</p>
+        <button id="gameEndButton"><p>Restart</p></button>
+      </div>
     </main>
     <footer><p>Made with love</p></footer>
     <script type="module" src="/src/main.js"></script>
