@@ -1,7 +1,7 @@
 # AppleCatcher
  WebGL game made with PhaserJS about catching apples
 
- #Installation
+# Installation
 
  1. Clone the repository
  2. This is a Vite project so open the terminal at folder
