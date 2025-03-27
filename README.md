@@ -11,6 +11,10 @@
 # The game
 Apple catcher is a simple game where the goal is to catch at least 15 apples in a frame of 30 seconds.
 
+Video
+https://www.youtube.com/watch?v=Xf2Q_bzk7Qg
+
+
 Start menu
 ![Screenshot 2025-03-26 at 8 39 37 PM](https://github.com/user-attachments/assets/ce141355-2389-4e1c-9774-b67616f930c1)
 
